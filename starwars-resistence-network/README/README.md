@@ -85,7 +85,8 @@ PATCH http://localhost:8081/rebelde/{id}/reportar/local
 Um rebelde é marcado como traidor quando, ao menos, três outros rebeldes reportarem a traição.
 POST http://localhost:8081/rebelde/reportar/traidor
 
-**idReporter** : Quem rporta 
+**idReporter** : Quem reporta
+
 **idTraidor** : Qual Rebelde será Traidor
 ```
 {
