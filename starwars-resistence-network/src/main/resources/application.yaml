@@ -1,0 +1,25 @@
+server:
+  port: 8081
+logging:
+  file:
+    name: /tmp/logs/app.log
+    max-size: 30MB
+  level:
+    org.springframework: INFO
+    com.letscode.starwars.controller: INFO
+    com.letscode.starwars.service: DEBUG
+    com.letscode.starwars.repository: DEBUG
+  pattern:
+    rolling-file-name: /tmp/logs/app-%d{yyyy-MM-dd}.%i.log
+spring:
+  datasource:
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1
+#    url: jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop

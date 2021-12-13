@@ -1,0 +1,55 @@
+curl --location --request POST 'http://localhost:8081/rebelde/' \
+--header 'Authorization: Basic YWRtaW46YWRtaW4=' \
+--header 'msisdn: ssss' \
+--header 'Action: create' \
+--header 'messageId: asass' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nome": "anupam",
+    "idade": 28,
+    "genero": "F",
+    "traidor": false,
+    "localizacao": {
+        "latitude": "-7.1185908",
+        "longitude": "-30.8406991",
+        "nome": "Via Láctea"
+    },
+    "inventario": {
+        "itens": [
+            {
+                "nome": "Arma",
+                "quantidade": 6
+            },
+            {
+                "nome": "Munição",
+                "quantidade": 6
+            }
+        ]
+    }
+}'
+
+curl --location --request POST 'http://localhost:8081/rebelde/' \
+--header 'Authorization: Basic YWRtaW46YWRtaW4=' \
+--header 'msisdn: ssss' \
+--header 'Action: create' \
+--header 'messageId: asass' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nome": "anupam",
+    "idade": 28,
+    "genero": "F",
+    "traidor": false,
+    "localizacao": {
+        "latitude": "-7.1185908",
+        "longitude": "-30.8406991",
+        "nome": "Via Láctea"
+    },
+    "inventario": {
+        "itens": [
+            {
+                "nome": "Água",
+                "quantidade": 6
+            }
+        ]
+    }
+}'

@@ -1,0 +1,22 @@
+CREATE TABLE Inventario
+(
+   id int PRIMARY KEY NOT NULL
+)
+;
+
+CREATE TABLE Item
+(
+   id int PRIMARY KEY NOT NULL,
+   nome varchar(45) NOT NULL,
+   quantidade int NOT NULL,
+   pontos int NOT NULL,
+   inventario_id int NOT NULL
+)
+;
+ALTER TABLE Item
+ADD CONSTRAINT FK_inventario_id_1
+FOREIGN KEY (inventario_id)
+REFERENCES Inventario(id)
+;
+CREATE INDEX FK_inventario_id_1_idx ON Item(inventario_id)
+;
