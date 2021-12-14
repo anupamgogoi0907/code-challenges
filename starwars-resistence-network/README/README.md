@@ -20,7 +20,13 @@ qual irá armazenar informação sobre os rebeldes, bem como os recursos que ele
 | Database      | H2 In memory      |
 | Port   | 8081        |
 
-## Executar usadno Docker
+## Executar no Local
+Navegar hasta raiz do projeto e executar esse comando:
+```
+./gradlew bootRun
+
+```
+## Executar usando Docker
 
 ```
 docker pull anupamgogoi/starwars-app:latest
