@@ -44,7 +44,7 @@ public class RebeldeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable("id") Integer id) {
+    public ResponseEntity findById(@PathVariable("id") @Valid Integer id) {
         logger.info("Executing " + this.getClass().getName() + ".findById()");
         RebeldeDTO rebeldeDTO = rebeldeService.findById(id);
         AppResponse appResponse = new AppResponse();
@@ -53,7 +53,7 @@ public class RebeldeController {
     }
 
     @PatchMapping("/{id}/reportar/local")
-    public ResponseEntity reportarLocal(@PathVariable("id") Integer id, @RequestBody LocalizacaoDTO localizacaoDTO) {
+    public ResponseEntity reportarLocal(@PathVariable("id") @Valid Integer id, @RequestBody @Valid LocalizacaoDTO localizacaoDTO) {
         logger.info("Executing " + this.getClass().getName() + ".findById()");
         rebeldeService.updateLocal(id, localizacaoDTO);
         AppResponse appResponse = new AppResponse();
@@ -63,7 +63,7 @@ public class RebeldeController {
 
 
     @PostMapping("/reportar/traidor")
-    public ResponseEntity reportarTraidor(@RequestBody ReporterDTO reportarDTO) {
+    public ResponseEntity reportarTraidor(@RequestBody @Valid ReporterDTO reportarDTO) {
         logger.info("Executing " + this.getClass().getName() + ".reportarTraidor()");
         String res = rebeldeService.updateReporters(reportarDTO);
         AppResponse appResponse = new AppResponse();
@@ -72,7 +72,7 @@ public class RebeldeController {
     }
 
     @PostMapping("/trade")
-    public ResponseEntity trade(@RequestBody TradeDTO[] tradeDTOS) {
+    public ResponseEntity trade(@RequestBody @Valid TradeDTO[] tradeDTOS) {
         logger.info("Executing " + this.getClass().getName() + ".trade()");
         boolean flag = rebeldeService.exchangeInventory(tradeDTOS[0], tradeDTOS[1]);
         AppResponse appResponse = new AppResponse();
