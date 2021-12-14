@@ -17,8 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.Arrays;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -69,6 +68,25 @@ public class APITest {
         // Check
         mockMvc.perform(get("/rebelde/" + id)).andExpect(status().isFound());
         System.out.println();
+    }
+
+    @Test
+    public void givenInputShouldModifyLocal() throws Exception {
+        RebeldeDTO rebeldeDTO = helper("Anupam");
+        ResultActions resultActions = mockMvc.perform(post("/rebelde").contentType("application/json")
+                .content(objectMapper.writeValueAsBytes(rebeldeDTO)))
+                .andExpect(status().isCreated());
+        MvcResult result = resultActions.andReturn();
+        String contentAsString = result.getResponse().getContentAsString();
+        AppResponse appResponse = objectMapper.readValue(contentAsString, AppResponse.class);
+        Integer id = (Integer) appResponse.getResponse();
+
+        LocalizacaoDTO localizacaoDTO = new LocalizacaoDTO().setNome("Galaxy2").setLatitude("100.0").setLongitude("200.0");
+
+
+        mockMvc.perform(patch("/rebelde/" + id + "/reportar/local")
+                .contentType("application/json").content(objectMapper.writeValueAsBytes(localizacaoDTO)))
+                .andExpect(status().isAccepted());
     }
 
     private RebeldeDTO helper(String nome) {
