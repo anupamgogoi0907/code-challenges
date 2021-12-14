@@ -27,7 +27,9 @@ public class RebeldeController {
     public ResponseEntity getRebeldes() {
         logger.info("Executing " + this.getClass().getName() + ".getRebeldes()");
         List<RebeldeDTO> rebeldeDTOList = rebeldeService.getAllRebeldes();
-        return ResponseEntity.ok(rebeldeDTOList);
+        AppResponse appResponse = new AppResponse();
+        appResponse.setResponse(rebeldeDTOList);
+        return new ResponseEntity(appResponse, HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -35,21 +37,27 @@ public class RebeldeController {
         logger.info("Executing " + this.getClass().getName() + ".createRebelde()");
         Integer id = rebeldeService.saveRebelde(rebeldeDTO);
         logger.info("Rebelde created: " + id);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        AppResponse appResponse = new AppResponse();
+        appResponse.setResponse(id);
+        return new ResponseEntity(appResponse, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity findById(@PathVariable("id") Integer id) {
         logger.info("Executing " + this.getClass().getName() + ".findById()");
         RebeldeDTO rebeldeDTO = rebeldeService.findById(id);
-        return ResponseEntity.ok(rebeldeDTO);
+        AppResponse appResponse = new AppResponse();
+        appResponse.setResponse(rebeldeDTO);
+        return new ResponseEntity(appResponse, HttpStatus.FOUND);
     }
 
     @PatchMapping("/{id}/reportar/local")
     public ResponseEntity reportarLocal(@PathVariable("id") Integer id, @RequestBody LocalizacaoDTO localizacaoDTO) {
         logger.info("Executing " + this.getClass().getName() + ".findById()");
         rebeldeService.updateLocal(id, localizacaoDTO);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        AppResponse appResponse = new AppResponse();
+        appResponse.setResponse("Localização atualizada para Rebelde: " + id);
+        return new ResponseEntity(appResponse, HttpStatus.ACCEPTED);
     }
 
 
@@ -58,7 +66,7 @@ public class RebeldeController {
         logger.info("Executing " + this.getClass().getName() + ".reportarTraidor()");
         String res = rebeldeService.updateReportCount(reportarDTO);
         AppResponse appResponse = new AppResponse();
-        appResponse.setPayload(res);
+        appResponse.setResponse(res);
         return new ResponseEntity(appResponse, HttpStatus.ACCEPTED);
     }
 
@@ -68,10 +76,10 @@ public class RebeldeController {
         boolean flag = rebeldeService.exchangeInventory(tradeDTOS[0], tradeDTOS[1]);
         AppResponse appResponse = new AppResponse();
         if (flag) {
-            appResponse.setPayload("Trade successful");
+            appResponse.setResponse("Trade successful");
             return new ResponseEntity(appResponse, HttpStatus.CREATED);
         } else {
-            appResponse.setPayload("Trade Failed");
+            appResponse.setResponse("Trade Failed");
             return new ResponseEntity(appResponse, HttpStatus.BAD_REQUEST);
         }
     }

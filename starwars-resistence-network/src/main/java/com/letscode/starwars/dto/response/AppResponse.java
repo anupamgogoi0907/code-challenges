@@ -20,6 +20,7 @@ public class AppResponse<T> {
     private T payload;
     private Object errors;
     private Object metadata;
+    private T response;
 
     public static <T> AppResponse<T> badRequest() {
         AppResponse<T> appResponse = new AppResponse<>();
