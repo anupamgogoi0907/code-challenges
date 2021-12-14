@@ -1,22 +1,27 @@
-# Starwars Resistence Network 
+# Starwars Resistence Network
+
 **Desenvolvedor:** Anupam Gogoi
 
-
 ## Descrição do problema
-O império continua sua luta incessante de dominar a galáxia, tentando ao máximo expandir seu território e eliminar os rebeldes.
-Você, como um soldado da resistência, foi designado para desenvolver um sistema para compartilhar recursos entre os rebeldes.
 
+O império continua sua luta incessante de dominar a galáxia, tentando ao máximo expandir seu território e eliminar os
+rebeldes. Você, como um soldado da resistência, foi designado para desenvolver um sistema para compartilhar recursos
+entre os rebeldes.
 
 ## Requisitos
-Você irá desenvolver uma API REST (sim, nós levamos a arquitetura da aplicação a sério mesmo no meio de uma guerra), ao qual irá armazenar informação sobre os rebeldes, bem como os recursos que eles possuem.
+
+Você irá desenvolver uma API REST (sim, nós levamos a arquitetura da aplicação a sério mesmo no meio de uma guerra), ao
+qual irá armazenar informação sobre os rebeldes, bem como os recursos que eles possuem.
 
 ## Configurações
+
 | Item      | Description |
 | ----------- | ----------- |
 | Database      | H2 In memory      |
 | Port   | 8081        |
 
 ## Executar usadno Docker
+
 ```
 docker pull anupamgogoi/starwars-app:latest
 docker run --name starwars -p 8081:8081 -d starwars-app 
@@ -24,15 +29,18 @@ docker logs -f starwars
 ```
 
 ## Postman Collection
+
 [Postman Collection](./STARWARS.postman_collection.json)
 
 ## Endpoints
 
 ### Adicionar Rebelde
-Seus pertences devem ser declarados quando eles são registrados no sistema. Após isso eles só poderão
-mudar seu inventário através de negociação com os outros rebeldes.Rebeldes não podem Adicionar/Remover itens do seu inventário
+
+Seus pertences devem ser declarados quando eles são registrados no sistema. Após isso eles só poderão mudar seu
+inventário através de negociação com os outros rebeldes.Rebeldes não podem Adicionar/Remover itens do seu inventário
 
 POST http://localhost:8081/rebelde/
+
 ```
 {
     "nome": "Rebelde Z",
@@ -66,13 +74,17 @@ POST http://localhost:8081/rebelde/
     }
 }
 ```
+
 ### Listar todos os Rebeldes
+
 GET http://localhost:8081/rebelde/
 
 ### Reportar Localização
+
 PATCH http://localhost:8081/rebelde/{id}/reportar/local
 
 **id** = id de **Rebelde**
+
 ```
 {
     "latitude": "1.0",
@@ -82,12 +94,14 @@ PATCH http://localhost:8081/rebelde/{id}/reportar/local
 ```
 
 ### Reportar Traidor
+
 Um rebelde é marcado como traidor quando, ao menos, três outros rebeldes reportarem a traição.
 POST http://localhost:8081/rebelde/reportar/traidor
 
 **idReporter** : Quem reporta
 
 **idTraidor** : Qual Rebelde será Traidor
+
 ```
 {
     "idReporter":3,
@@ -95,12 +109,12 @@ POST http://localhost:8081/rebelde/reportar/traidor
 }
 ```
 
-
 ### Trade
-Os rebeldes poderão negociar itens entre eles.
-Para isso, eles devem respeitar a tabela de preços abaixo, onde o valor do item é descrito em termo de pontos.
-Ambos os lados deverão oferecer a mesma quantidade de pontos. Por exemplo, 1 arma e 1 água (1 x 4 + 1 x 2) valem 6 comidas (6 x 1) ou 2 munições (2 x 3).
-A negociação em si não será armazenada, mas os itens deverão ser transferidos de um rebelde a outro.
+
+Os rebeldes poderão negociar itens entre eles. Para isso, eles devem respeitar a tabela de preços abaixo, onde o valor
+do item é descrito em termo de pontos. Ambos os lados deverão oferecer a mesma quantidade de pontos. Por exemplo, 1 arma
+e 1 água (1 x 4 + 1 x 2) valem 6 comidas (6 x 1) ou 2 munições (2 x 3). A negociação em si não será armazenada, mas os
+itens deverão ser transferidos de um rebelde a outro.
 
 POST http://localhost:8081/rebelde/trade
 

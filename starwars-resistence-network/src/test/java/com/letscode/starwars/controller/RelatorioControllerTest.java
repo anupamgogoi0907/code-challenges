@@ -24,15 +24,15 @@ public class RelatorioControllerTest {
 
     @Test
     public void givenInputShouldGenerateRelatorio() {
-        RebeldeDTO r1=helper("A",false);
-        RebeldeDTO r2=helper("B",true);
-        RebeldeDTO r3=helper("C",false);
+        RebeldeDTO r1 = helper("A", false);
+        RebeldeDTO r2 = helper("B", true);
+        RebeldeDTO r3 = helper("C", false);
         rebeldeController.createRebelde(r1);
         rebeldeController.createRebelde(r2);
         rebeldeController.createRebelde(r3);
 
-        ResponseEntity responseEntity=relatorioController.getReport();
-        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        ResponseEntity responseEntity = relatorioController.getReport();
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     private RebeldeDTO helper(String nome, boolean traidor) {

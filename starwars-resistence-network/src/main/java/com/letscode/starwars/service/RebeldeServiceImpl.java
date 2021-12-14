@@ -98,7 +98,7 @@ public class RebeldeServiceImpl implements RebeldeService {
             // Create Inventario
             List<Item> itemList = new ArrayList<>();
             rebeldeDTO.getInventario().getItens().forEach(i -> {
-                if(i.getQuantidade()!=0){
+                if (i.getQuantidade() != 0) {
                     Item item = new Item()
                             .setNome(i.getNome())
                             .setQuantidade(i.getQuantidade())

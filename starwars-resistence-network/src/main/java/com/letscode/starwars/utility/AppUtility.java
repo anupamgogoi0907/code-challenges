@@ -250,6 +250,7 @@ public class AppUtility {
     /**
      * 1. Porcentagem de traidores.
      * 2. Porcentagem de rebeldes.
+     *
      * @param listRebelde
      * @return
      */

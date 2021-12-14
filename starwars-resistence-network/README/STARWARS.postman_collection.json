@@ -1,189 +1,189 @@
 {
-	"info": {
-		"_postman_id": "fbcf6bbe-b814-465b-922a-6e6a61dbcfdd",
-		"name": "STARWARS",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Create Rebelde",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Basic YWRtaW46YWRtaW4=",
-						"type": "text"
-					},
-					{
-						"key": "msisdn",
-						"value": "ssss",
-						"type": "text"
-					},
-					{
-						"key": "Action",
-						"value": "create",
-						"type": "text"
-					},
-					{
-						"key": "messageId",
-						"value": "asass",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"nome\": \"Rebelde Z\",\n    \"idade\": 28,\n    \"genero\": \"F\",\n    \"traidor\": false,\n    \"localizacao\": {\n        \"latitude\": \"-7.1185908\",\n        \"longitude\": \"-30.8406991\",\n        \"nome\": \"Via Láctea\"\n    },\n    \"inventario\": {\n        \"itens\": [\n            {\n                \"nome\": \"Arma\",\n                \"quantidade\": 1\n            },\n            {\n                \"nome\": \"Munição\",\n                \"quantidade\": 0\n            },\n            {\n                \"nome\": \"Água\",\n                \"quantidade\": 5\n            },\n            {\n                \"nome\": \"Comida\",\n                \"quantidade\": 3\n            }\n        ]\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/rebelde/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"rebelde",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Trade",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "[\n    {\n        \"id\": 1,\n        \"itens\": [\n            {\n                \"nome\": \"Arma\",\n                \"quantidade\": 1\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"itens\": [\n            {\n                \"nome\": \"Água\",\n                \"quantidade\": 2\n            }\n        ]\n    }\n]",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/rebelde/trade",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"rebelde",
-						"trade"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Report Traidor",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"idReporter\":3,\n    \"idTraidor\": 1\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/rebelde/reportar/traidor",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"rebelde",
-						"reportar",
-						"traidor"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get All",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/rebelde/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"rebelde",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Relatorio",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8081/relatorio/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"relatorio",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Atualizar Local",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"latitude\": \"1.0\",\n    \"longitude\": \"2.0\",\n    \"nome\": \"Demo\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/rebelde/1/reportar/local",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"rebelde",
-						"1",
-						"reportar",
-						"local"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "fbcf6bbe-b814-465b-922a-6e6a61dbcfdd",
+    "name": "STARWARS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Rebelde",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Basic YWRtaW46YWRtaW4=",
+            "type": "text"
+          },
+          {
+            "key": "msisdn",
+            "value": "ssss",
+            "type": "text"
+          },
+          {
+            "key": "Action",
+            "value": "create",
+            "type": "text"
+          },
+          {
+            "key": "messageId",
+            "value": "asass",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nome\": \"Rebelde Z\",\n    \"idade\": 28,\n    \"genero\": \"F\",\n    \"traidor\": false,\n    \"localizacao\": {\n        \"latitude\": \"-7.1185908\",\n        \"longitude\": \"-30.8406991\",\n        \"nome\": \"Via Láctea\"\n    },\n    \"inventario\": {\n        \"itens\": [\n            {\n                \"nome\": \"Arma\",\n                \"quantidade\": 1\n            },\n            {\n                \"nome\": \"Munição\",\n                \"quantidade\": 0\n            },\n            {\n                \"nome\": \"Água\",\n                \"quantidade\": 5\n            },\n            {\n                \"nome\": \"Comida\",\n                \"quantidade\": 3\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/rebelde/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "rebelde",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Trade",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"id\": 1,\n        \"itens\": [\n            {\n                \"nome\": \"Arma\",\n                \"quantidade\": 1\n            }\n        ]\n    },\n    {\n        \"id\": 2,\n        \"itens\": [\n            {\n                \"nome\": \"Água\",\n                \"quantidade\": 2\n            }\n        ]\n    }\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/rebelde/trade",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "rebelde",
+            "trade"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Report Traidor",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"idReporter\":3,\n    \"idTraidor\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/rebelde/reportar/traidor",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "rebelde",
+            "reportar",
+            "traidor"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/rebelde/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "rebelde",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Relatorio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/relatorio/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "relatorio",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Local",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"latitude\": \"1.0\",\n    \"longitude\": \"2.0\",\n    \"nome\": \"Demo\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/rebelde/1/reportar/local",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "rebelde",
+            "1",
+            "reportar",
+            "local"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }
