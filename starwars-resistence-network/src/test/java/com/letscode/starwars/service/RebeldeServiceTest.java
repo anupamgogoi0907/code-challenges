@@ -88,16 +88,17 @@ public class RebeldeServiceTest {
                 .setIdade(33)
                 .setLocalizacao(new LocalizacaoDTO().setNome("Galaxy1").setLatitude("1.0").setLongitude("1.0"))
                 .setInventario(new InventarioDTO().setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2).setPontos(4))));
-        rebeldeService.saveRebelde(r1);
-        rebeldeService.saveRebelde(r2);
+        int r1id = rebeldeService.saveRebelde(r1);
+        int r2id = rebeldeService.saveRebelde(r2);
 
-        TradeDTO r1Trade = new TradeDTO().setId(1).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
-        TradeDTO r2Trade = new TradeDTO().setId(2).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2)));
+        TradeDTO r1Trade = new TradeDTO().setId(r1id).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
+        TradeDTO r2Trade = new TradeDTO().setId(r2id).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2)));
 
         boolean check = rebeldeService.exchangeInventory(r1Trade, r2Trade);
         assertTrue(check);
 
     }
+
     @Test
     public void givenInputShouldNotTrade() {
         RebeldeDTO r1 = new RebeldeDTO()
@@ -115,11 +116,11 @@ public class RebeldeServiceTest {
                 .setIdade(33)
                 .setLocalizacao(new LocalizacaoDTO().setNome("Galaxy1").setLatitude("1.0").setLongitude("1.0"))
                 .setInventario(new InventarioDTO().setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2).setPontos(4))));
-        rebeldeService.saveRebelde(r1);
-        rebeldeService.saveRebelde(r2);
+        int r1id = rebeldeService.saveRebelde(r1);
+        int r2id = rebeldeService.saveRebelde(r2);
 
-        TradeDTO r1Trade = new TradeDTO().setId(1).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
-        TradeDTO r2Trade = new TradeDTO().setId(2).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(1)));
+        TradeDTO r1Trade = new TradeDTO().setId(r1id).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
+        TradeDTO r2Trade = new TradeDTO().setId(r2id).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(1)));
 
         boolean check = rebeldeService.exchangeInventory(r1Trade, r2Trade);
         assertFalse(check);

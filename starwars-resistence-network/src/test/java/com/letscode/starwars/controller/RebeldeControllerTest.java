@@ -4,6 +4,7 @@ import com.letscode.starwars.dto.*;
 import com.letscode.starwars.dto.response.AppResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 public class RebeldeControllerTest {
 
     @Autowired
@@ -98,11 +100,13 @@ public class RebeldeControllerTest {
                 .setIdade(33)
                 .setLocalizacao(new LocalizacaoDTO().setNome("Galaxy1").setLatitude("1.0").setLongitude("1.0"))
                 .setInventario(new InventarioDTO().setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2).setPontos(4))));
-        rebeldeController.createRebelde(r1);
-        rebeldeController.createRebelde(r2);
+        ResponseEntity re1 = rebeldeController.createRebelde(r1);
+        Integer r1id = (Integer) ((AppResponse) re1.getBody()).getResponse();
+        ResponseEntity re2 = rebeldeController.createRebelde(r2);
+        Integer r2id = (Integer) ((AppResponse) re2.getBody()).getResponse();
 
-        TradeDTO r1Trade = new TradeDTO().setId(1).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
-        TradeDTO r2Trade = new TradeDTO().setId(2).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2)));
+        TradeDTO r1Trade = new TradeDTO().setId(r1id).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
+        TradeDTO r2Trade = new TradeDTO().setId(r2id).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2)));
 
         ResponseEntity responseEntity = rebeldeController.trade(new TradeDTO[]{r1Trade, r2Trade});
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
@@ -110,7 +114,7 @@ public class RebeldeControllerTest {
     }
 
     @Test
-    public void givenInputShouldNotTrade(){
+    public void givenInputShouldNotTrade() {
         RebeldeDTO r1 = new RebeldeDTO()
                 .setNome("A")
                 .setTraidor(false)
@@ -126,11 +130,13 @@ public class RebeldeControllerTest {
                 .setIdade(33)
                 .setLocalizacao(new LocalizacaoDTO().setNome("Galaxy1").setLatitude("1.0").setLongitude("1.0"))
                 .setInventario(new InventarioDTO().setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(2).setPontos(4))));
-        rebeldeController.createRebelde(r1);
-        rebeldeController.createRebelde(r2);
+        ResponseEntity re1 = rebeldeController.createRebelde(r1);
+        Integer r1id = (Integer) ((AppResponse) re1.getBody()).getResponse();
+        ResponseEntity re2 = rebeldeController.createRebelde(r2);
+        Integer r2id = (Integer) ((AppResponse) re2.getBody()).getResponse();
 
-        TradeDTO r1Trade = new TradeDTO().setId(1).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
-        TradeDTO r2Trade = new TradeDTO().setId(2).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(1)));
+        TradeDTO r1Trade = new TradeDTO().setId(r1id).setItens(Arrays.asList(new ItemDTO().setNome("Arma").setQuantidade(1)));
+        TradeDTO r2Trade = new TradeDTO().setId(r2id).setItens(Arrays.asList(new ItemDTO().setNome("Água").setQuantidade(1)));
         ResponseEntity responseEntity = rebeldeController.trade(new TradeDTO[]{r1Trade, r2Trade});
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
     }
