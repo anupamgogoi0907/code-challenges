@@ -98,11 +98,13 @@ public class RebeldeServiceImpl implements RebeldeService {
             // Create Inventario
             List<Item> itemList = new ArrayList<>();
             rebeldeDTO.getInventario().getItens().forEach(i -> {
-                Item item = new Item()
-                        .setNome(i.getNome())
-                        .setQuantidade(i.getQuantidade())
-                        .setPontos(i.getQuantidade() * AppUtility.getPontosByItem(i.getNome()));
-                itemList.add(item);
+                if(i.getQuantidade()!=0){
+                    Item item = new Item()
+                            .setNome(i.getNome())
+                            .setQuantidade(i.getQuantidade())
+                            .setPontos(i.getQuantidade() * AppUtility.getPontosByItem(i.getNome()));
+                    itemList.add(item);
+                }
             });
             Inventario inventario = new Inventario().setItens(itemList);
 
