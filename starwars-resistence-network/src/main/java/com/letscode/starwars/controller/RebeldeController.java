@@ -64,7 +64,7 @@ public class RebeldeController {
     @PostMapping("/reportar/traidor")
     public ResponseEntity reportarTraidor(@RequestBody ReporterDTO reportarDTO) {
         logger.info("Executing " + this.getClass().getName() + ".reportarTraidor()");
-        String res = rebeldeService.updateReportCount(reportarDTO);
+        String res = rebeldeService.updateReporters(reportarDTO);
         AppResponse appResponse = new AppResponse();
         appResponse.setResponse(res);
         return new ResponseEntity(appResponse, HttpStatus.ACCEPTED);

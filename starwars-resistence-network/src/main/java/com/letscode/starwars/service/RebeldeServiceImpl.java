@@ -193,7 +193,7 @@ public class RebeldeServiceImpl implements RebeldeService {
      * @return
      */
     @Override
-    public String updateReportCount(ReporterDTO reporterDTO) {
+    public String updateReporters(ReporterDTO reporterDTO) {
         String res = "";
         try {
             logger.info("Executing " + this.getClass().getName() + ".updateReportCount()");

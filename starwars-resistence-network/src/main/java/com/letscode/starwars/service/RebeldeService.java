@@ -17,7 +17,7 @@ public interface RebeldeService {
 
     public void updateLocal(Integer rebeldeId, LocalizacaoDTO localizacaoDTO);
 
-    public String updateReportCount(ReporterDTO reporterDTO);
+    public String updateReporters(ReporterDTO reporterDTO);
 
     public boolean exchangeInventory(TradeDTO offer, TradeDTO receptor);
 }
