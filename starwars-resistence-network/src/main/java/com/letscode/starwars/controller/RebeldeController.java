@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,7 +34,7 @@ public class RebeldeController {
     }
 
     @PostMapping("")
-    public ResponseEntity createRebelde(@RequestBody RebeldeDTO rebeldeDTO) {
+    public ResponseEntity createRebelde(@RequestBody @Valid RebeldeDTO rebeldeDTO) {
         logger.info("Executing " + this.getClass().getName() + ".createRebelde()");
         Integer id = rebeldeService.saveRebelde(rebeldeDTO);
         logger.info("Rebelde created: " + id);
