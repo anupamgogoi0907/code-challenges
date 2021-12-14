@@ -68,18 +68,23 @@ public class RebeldeControllerTest {
         RebeldeDTO r2 = helper("B");
         RebeldeDTO r3 = helper("C");
         RebeldeDTO r4 = helper("D");
-        rebeldeController.createRebelde(r1);
-        rebeldeController.createRebelde(r2);
-        rebeldeController.createRebelde(r3);
-        rebeldeController.createRebelde(r4);
 
-        ReporterDTO rr1 = new ReporterDTO().setIdReporter(2).setIdTraidor(1);
-        ResponseEntity re1 = rebeldeController.reportarTraidor(rr1);
-        ReporterDTO rr2 = new ReporterDTO().setIdReporter(3).setIdTraidor(1);
-        ResponseEntity re2 = rebeldeController.reportarTraidor(rr2);
-        ReporterDTO rr3 = new ReporterDTO().setIdReporter(4).setIdTraidor(1);
-        ResponseEntity re3 = rebeldeController.reportarTraidor(rr3);
-        String appResponse = (String) ((AppResponse) re3.getBody()).getResponse();
+        ResponseEntity re1 = rebeldeController.createRebelde(r1);
+        Integer id1 = (Integer) ((AppResponse) re1.getBody()).getResponse();
+        ResponseEntity re2 = rebeldeController.createRebelde(r2);
+        Integer id2 = (Integer) ((AppResponse) re2.getBody()).getResponse();
+        ResponseEntity re3 = rebeldeController.createRebelde(r3);
+        Integer id3 = (Integer) ((AppResponse) re3.getBody()).getResponse();
+        ResponseEntity re4 = rebeldeController.createRebelde(r4);
+        Integer id4 = (Integer) ((AppResponse) re4.getBody()).getResponse();
+
+        ReporterDTO rr1 = new ReporterDTO().setIdReporter(id2).setIdTraidor(id1);
+        rebeldeController.reportarTraidor(rr1);
+        ReporterDTO rr2 = new ReporterDTO().setIdReporter(id3).setIdTraidor(id1);
+        rebeldeController.reportarTraidor(rr2);
+        ReporterDTO rr3 = new ReporterDTO().setIdReporter(id4).setIdTraidor(id1);
+        ResponseEntity responseEntity = rebeldeController.reportarTraidor(rr3);
+        String appResponse = (String) ((AppResponse) responseEntity.getBody()).getResponse();
         assertEquals("Rebelde foi marcado como Traidor", appResponse);
     }
 

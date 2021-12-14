@@ -89,6 +89,26 @@ public class APITest {
                 .andExpect(status().isAccepted());
     }
 
+    @Test
+    public void givenInputShouldReportTraidor() throws Exception {
+        RebeldeDTO r1 = helper("A");
+        RebeldeDTO r2 = helper("B");
+        RebeldeDTO r3 = helper("C");
+        RebeldeDTO r4 = helper("D");
+        mockMvc.perform(post("/rebelde").contentType("application/json")
+                .content(objectMapper.writeValueAsBytes(r1)))
+                .andExpect(status().isCreated());
+        mockMvc.perform(post("/rebelde").contentType("application/json")
+                .content(objectMapper.writeValueAsBytes(r2)))
+                .andExpect(status().isCreated());
+        mockMvc.perform(post("/rebelde").contentType("application/json")
+                .content(objectMapper.writeValueAsBytes(r3)))
+                .andExpect(status().isCreated());
+        mockMvc.perform(post("/rebelde").contentType("application/json")
+                .content(objectMapper.writeValueAsBytes(r4)))
+                .andExpect(status().isCreated());
+    }
+
     private RebeldeDTO helper(String nome) {
         RebeldeDTO rebeldeDTO = new RebeldeDTO()
                 .setNome(nome)
