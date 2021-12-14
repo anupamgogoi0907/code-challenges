@@ -1,5 +1,5 @@
 # Starwars Resistence Network 
-**Desenvovedor:** Anupam Gogoi
+**Desenvolvedor:** Anupam Gogoi
 
 
 ## Descrição do problema
